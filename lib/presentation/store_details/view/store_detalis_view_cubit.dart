@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -86,7 +87,9 @@ class StoreDetalisViewCubit extends StatelessWidget {
                   //  borderRadius: BorderRadius.circular(AppSize.s12),
                   // border: Border.all(color: ColorManger.grey, width: AppSize.s1),
                   image: DecorationImage(
-                    image: NetworkImage(storeDetails.image),
+                    image:
+                        // NetworkImage(storeDetails.image),
+                        CachedNetworkImageProvider(storeDetails.image),
                     fit: BoxFit.cover,
                   ),
                 ),

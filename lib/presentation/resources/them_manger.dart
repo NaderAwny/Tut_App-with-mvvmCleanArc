@@ -7,6 +7,9 @@ import 'package:mvvmclean/presentation/resources/value_manger.dart';
 
 ThemeData getApplicationTheme() {
   return ThemeData(
+    progressIndicatorTheme: ProgressIndicatorThemeData(
+      color: ColorManger.primary,
+    ),
     //main Colors
     primaryColor: ColorManger.primary,
     primaryColorLight: ColorManger.lightPrimary,

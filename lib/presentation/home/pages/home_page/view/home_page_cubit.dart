@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -89,7 +90,14 @@ class HomePageCubit extends StatelessWidget {
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(AppSize.s12.r),
-                      child: Image.network(banner.image, fit: BoxFit.cover),
+                      child: CachedNetworkImage(
+                        imageUrl: banner.image,
+                        fit: BoxFit.cover,
+                        placeholder: (context, url) =>
+                            const Center(child: CircularProgressIndicator()),
+                        errorWidget: (context, url, error) =>
+                            const Icon(Icons.error),
+                      ),
                     ),
                   ),
                 ),
@@ -153,13 +161,17 @@ class HomePageCubit extends StatelessWidget {
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(AppSize.s12.r),
-                      child: Image.network(
+                      child: CachedNetworkImage(
+                        imageUrl: services[index].image,
                         width: 165.w,
                         // MediaQuery.of(context).size.width * 0.45,
                         height: 160.h,
                         // MediaQuery.of(context).size.height * 0.185,
-                        services[index].image,
                         fit: BoxFit.cover,
+                        placeholder: (context, url) =>
+                            const Center(child: CircularProgressIndicator()),
+                        errorWidget: (context, url, error) =>
+                            const Icon(Icons.error),
                       ),
                     ),
                     Padding(
@@ -229,13 +241,17 @@ class HomePageCubit extends StatelessWidget {
                       ),
                     ),
                     child: ClipRRect(
-                      child: Image.network(
+                      child: CachedNetworkImage(
+                        imageUrl: stores[index].image,
                         width: 165.w,
                         // MediaQuery.of(context).size.width * 0.2,
                         height: 165.h,
                         // MediaQuery.of(context).size.height * 0.1,
-                        stores[index].image,
                         fit: BoxFit.cover,
+                        placeholder: (context, url) =>
+                            const Center(child: CircularProgressIndicator()),
+                        errorWidget: (context, url, error) =>
+                            const Icon(Icons.error),
                       ),
                     ),
                   ),
